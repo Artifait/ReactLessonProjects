@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import './App.css'
+import users from './data/users';
+import UserCard from './components/UserCard';
 
-function App() {
+export default function App() {
   return (
-      <h1>Крутое WEB приложение</h1>
-  )
+    <div className="app-container">
+      <h1>Пользователи</h1>
+      <div className="card-grid">
+        {users.map((user) => (
+          <UserCard key={uuidv4()} {...user} />
+        ))}
+      </div>
+    </div>
+  );
 }
-
-export default App
