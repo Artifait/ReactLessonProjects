@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import './App.css'
+import React from "react";
+import PersonList from "./components/PersonList";
+import "./App.css";
 
-function App() {
+export default function App() {
   return (
-      <h1>Крутое WEB приложение</h1>
-  )
+    <div className="app">
+      <h1>Клиенты</h1>
+      <PersonList />
+    </div>
+  );
 }
-
-export default App
