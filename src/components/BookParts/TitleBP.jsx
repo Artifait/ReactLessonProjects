@@ -1,6 +1,4 @@
 
 export default function TitleBP({ bookTitle }) {
-  return <div>
-    Название: {bookTitle}
-  </div>
+  return <div className="book-title">Название: {bookTitle}</div>;
 }

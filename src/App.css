@@ -1,46 +1,67 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 20px;
+}
 
-#root {
-  max-width: 1280px;
+h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+
+.books-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: left;
+  padding: 0 10px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (min-width: 600px) {
+  .books-container {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (min-width: 900px) {
+  .books-container {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-.card {
-  padding: 2em;
+.book {
+  background-color: #1e1e1e;
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+}
+
+.book div,
+.book p {
+  font-size: 16px;
+  margin: 10px 0;
+  padding-left: 10px;
+  border-left: 3px solid #bb86fc;
+  word-wrap: break-word;
+}
+
+.book-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #bb86fc;
+  border-left: 4px solid #bb86fc;
+  padding-left: 12px;
+  margin-bottom: 15px;
 }

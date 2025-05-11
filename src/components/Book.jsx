@@ -5,7 +5,7 @@ import TitleBP from "./BookParts/TitleBP";
 
 export default function Book({ title, firstName, lastName, pageCount, textReview }) {
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 mb-6 max-w-md hover:shadow-lg transition-shadow">
+    <div className="book">
       <TitleBP bookTitle={title} />
       <AuthorBP firstName={firstName} lastName={lastName} />
       <PageCountBP pageCount={pageCount} />

@@ -1,6 +1,4 @@
 
 export default function ReviewBP({ textReview }) {
-  return <div>
-    Рецензия: {textReview}
-  </div>
+  return <div>Рецензия: {textReview}</div>
 }

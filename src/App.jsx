@@ -3,10 +3,9 @@ import Book from './components/Book'
 
 function App() {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-semibold mb-8 text-center">Крутое WEB приложение</h1>
-
-      <div className="flex flex-col items-center space-y-4">
+    <div>
+      <h1>Библиотека</h1>
+      <div className="books-container">
         <Book
           title="Мёртвые души"
           firstName="Николай"
@@ -39,5 +38,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App
