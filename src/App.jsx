@@ -1,19 +1,34 @@
 import './App.css';
-import MusicGroup from './components/MusicGroup';
+import RecipeTitle from './components/RecipeTitle';
+import Ingredients from './components/Ingredients';
+import Instructions from './components/Instructions';
+import RecipeImage from './components/RecipeImage';
 
 function App() {
-  const groupData = {
-    name: 'Samurai Cats',
-    peoples: ['Иван', 'Анна', 'Хироши'],
-    albums: [
-      { title: 'Путь Самурая', pathToCaver: './images/Samurai.jpg' },
-      { title: 'CITCAT', pathToCaver: './images/Cat.jpg' }
+  const recipe = {
+    title: "Паста с соусом Альфредо",
+    image: "images/Pasta.jpg",
+    ingredients: [
+      { name: "Паста", amount: "200 г" },
+      { name: "Сливки 20%", amount: "100 мл" },
+      { name: "Пармезан", amount: "50 г" },
+      { name: "Чеснок", amount: "2 зубчика" },
+      { name: "Масло сливочное", amount: "20 г" }
+    ],
+    instructions: [
+      "Отварите пасту до готовности.",
+      "Обжарьте чеснок на сливочном масле.",
+      "Добавьте сливки и тертый пармезан, перемешайте.",
+      "Смешайте соус с пастой и подавайте горячим."
     ]
   };
 
   return (
     <div className="App">
-      <MusicGroup {...groupData} />
+      <RecipeTitle title={recipe.title} />
+      <RecipeImage path={recipe.image} alt={recipe.title} />
+      <Ingredients list={recipe.ingredients} />
+      <Instructions steps={recipe.instructions} />
     </div>
   );
 }

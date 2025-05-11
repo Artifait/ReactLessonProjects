@@ -1,88 +1,46 @@
 body {
   background-color: #121212;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
+  color: #fff;
+  font-family: sans-serif;
+  padding: 20px;
   margin: 0;
-  padding: 0;
 }
 
-.music-group {
-  border: 1px solid #333;
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recipe-title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.recipe-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.ingredients, .instructions {
   background-color: #1e1e1e;
   padding: 20px;
   margin: 20px auto;
-  border-radius: 10px;
-  max-width: 600px;
-}
-
-.group-name {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.albums-container {
-  margin-top: 10px;
-}
-
-li {
-  list-style: circle;
-  margin-left: 20px;
-}
-
-.album {
-  background-color: #2a2a2a;
-  padding: 15px;
-  margin: 15px 0;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  max-width: 600px;
+  text-align: left;
 }
 
-.album:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
-}
-
-.album img {
-  border-radius: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.album-title {
-  font-size: 18px;
-  font-weight: 500;
-  color: #f0f0f0;
+h2 {
+  margin-top: 0;
   text-align: center;
 }
 
-
-.group-composition {
-  margin-top: 15px;
-  background-color: #2f2f2f;
-  padding: 12px 16px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+ul, ol {
+  margin: 10px 0 0 20px;
+  padding-left: 20px;
 }
-
-.group-composition h3 {
-  margin: 0 0 10px 0;
-  font-size: 20px;
-  color: #ffffff;
-}
-
-.group-composition ul {
-  padding-left: 5px;
-  margin: 0;
-}
-
