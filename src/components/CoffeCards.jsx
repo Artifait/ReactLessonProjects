@@ -7,27 +7,38 @@ export default function CoffeCards({ mode = "normal" }) {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    setLoad(true);
-    setEr('');
-    setCoffe([]);
+    const fetchCoffee = async () => {
+      setLoad(true);
+      setEr('');
+      setCoffe([]);
 
-    if (mode === 'error') {
-      setTimeout(() => {
-        setEr("Ошибка при загрузке данных.");
+      if (mode === 'error') {
+        setTimeout(() => {
+          setEr("Ошибка при загрузке данных.");
+          setLoad(false);
+        }, 1000);
+        return;
+      }
+
+      if (mode === 'slow') {
+        return;
+      }
+
+      try {
+        const res = await fetch("https://api.sampleapis.com/coffee/hot");
+        if (!res.ok) {
+          throw new Error("ответ не ok");
+        }
+        const data = await res.json();
+        setCoffe(data);
+      } catch (error) {
+        setEr("Что-то пошло не так...");
+      } finally {
         setLoad(false);
-      }, 1000);
-      return;
-    }
+      }
+    };
 
-    if (mode === 'slow') {
-      return;
-    }
-
-    fetch("https://api.sampleapis.com/coffee/hot")
-      .then((x) => x.json())
-      .then((y) => setCoffe(y))
-      .catch(() => setEr("Что-то пошло не так..."))
-      .finally(() => setLoad(false));
+    fetchCoffee();
   }, [mode]);
 
   if (load) {
@@ -48,13 +59,10 @@ export default function CoffeCards({ mode = "normal" }) {
   }
 
   return (
-    <>
-      <div className="coffee-cards">
-        {coffe.map(item => (
-          <CoffeCard key={item.id} {...item} />
-        ))}
-      </div>
-    </>
+    <div className="coffee-cards">
+      {coffe.map(item => (
+        <CoffeCard key={item.id} {...item} />
+      ))}
+    </div>
   );
 }
-
