@@ -1,0 +1,18 @@
+.todo {
+  background-color: #1e1e1e;
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #333;
+}
+
+.todo span {
+  cursor: pointer;
+}
+
+.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
