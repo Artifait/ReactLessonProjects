@@ -1,3 +1,16 @@
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todoWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
 .todo {
   background-color: #1e1e1e;
   padding: 12px;
@@ -9,10 +22,35 @@
 }
 
 .todo span {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
 .completed span {
   text-decoration: line-through;
   color: #888;
+}
+
+.caret {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.subForm {
+  margin-top: 8px;
+}
+
+.subtask {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #292929;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  border: 1px solid #333;
 }

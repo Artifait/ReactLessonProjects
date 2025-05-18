@@ -4,32 +4,68 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import './App.css';
 
-const App = () => {
+const addNode = (nodes, parentId, text) => {
+  if (parentId === null) {
+    return [...nodes, { id: uuidv4(), text, completed: false, children: [] }];
+  }
+  return nodes.map(node => {
+    if (node.id === parentId) {
+      return {
+        ...node,
+        children: [...node.children, { id: uuidv4(), text, completed: false, children: [] }]
+      };
+    }
+    return { ...node, children: addNode(node.children, parentId, text) };
+  });
+};
+
+const toggleNode = (nodes, id) => {
+  const propagate = (node, status) => ({
+    ...node,
+    completed: status,
+    children: node.children.map(child => propagate(child, status))
+  });
+
+  return nodes.map(node => {
+    if (node.id === id) {
+      const newStatus = !node.completed;
+      return propagate(node, newStatus);
+    }
+    return { ...node, children: toggleNode(node.children, id) };
+  });
+};
+
+const deleteNode = (nodes, id) => {
+  return nodes
+    .filter(node => node.id !== id)
+    .map(node => ({ ...node, children: deleteNode(node.children, id) }));
+};
+
+export default function App() {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (text) => {
-    setTodos([...todos, { id: uuidv4(), text, completed: false }]);
+  const handleAdd = (text, parentId = null) => {
+    setTodos(prev => addNode(prev, parentId, text));
   };
 
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+  const handleToggle = (id) => {
+    setTodos(prev => toggleNode(prev, id));
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+  const handleDelete = (id) => {
+    setTodos(prev => deleteNode(prev, id));
   };
 
   return (
     <div className="app">
       <h1>Список дел</h1>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoForm addTodo={(text) => handleAdd(text, null)} />
+      <TodoList
+        todos={todos}
+        addTodo={handleAdd}
+        toggleTodo={handleToggle}
+        deleteTodo={handleDelete}
+      />
     </div>
   );
-};
-
-export default App;
+}
