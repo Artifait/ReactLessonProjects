@@ -54,3 +54,30 @@
   margin-top: 10px;
   border: 1px solid #333;
 }
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.2s, transform 0.2s;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.iconBtn:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+}

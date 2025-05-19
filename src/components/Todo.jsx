@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { RiDeleteBin5Line, RiAddLine, RiCheckLine, RiArrowGoBackLine } from 'react-icons/ri';
 import styles from './Todo.module.css';
-import Btn from './Btn';
 import TodoForm from './TodoForm';
 
 export default function Todo({ task, level, addTodo, toggleTodo, deleteTodo }) {
@@ -25,20 +25,18 @@ export default function Todo({ task, level, addTodo, toggleTodo, deleteTodo }) {
           <span>{task.text}</span>
         </div>
         <div className={styles.actions}>
-          <Btn
-            text={task.completed ? 'Восстановить' : 'Завершить'}
-            onClick={() => toggleTodo(task.id)}
-          />
-          <Btn
-            text={showForm ? 'Отмена' : 'Добавить'}
-            onClick={() => setShowForm(prev => !prev)}
-          />
-          <Btn
-            text="Удалить"
-            onClick={() => deleteTodo(task.id)}
-          />
+          <button className={styles.iconBtn} onClick={() => toggleTodo(task.id)} title={task.completed ? 'Восстановить' : 'Завершить'}>
+            {task.completed ? <RiArrowGoBackLine /> : <RiCheckLine />}
+          </button>
+          <button className={styles.iconBtn} onClick={() => setShowForm(prev => !prev)} title={showForm ? 'Отмена' : 'Добавить подзадачу'}>
+            <RiAddLine style={{ transform: showForm ? 'rotate(45deg)' : 'none' }} />
+          </button>
+          <button className={styles.iconBtn} onClick={() => deleteTodo(task.id)} title="Удалить">
+            <RiDeleteBin5Line />
+          </button>
         </div>
       </div>
+
       {showForm && (
         <div className={styles.subForm}>
           <TodoForm
