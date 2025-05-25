@@ -1,0 +1,18 @@
+.toggle {
+  margin-bottom: 10px;
+}
+
+.toggle button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #5e5e5e;
+}
+
+.toggle .active {
+  background-color: #171717;
+  color: white;
+}
