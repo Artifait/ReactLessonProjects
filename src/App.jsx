@@ -1,18 +1,6 @@
-import { useState } from 'react'
-import './App.css'
-import Btn from './components/Btn'
+import "./App.css";
+import Magic8Ball from "./components/Magic8Ball";
 
-function App() {
-  const [key, setKey] = useState("Press Key");
-  const onKey = () => {
-
-  }
-  return (
-    <>
-      <h1>Крутое WEB приложение</h1>
-      <Btn text="dadsfs" onClick={() => console.log("DFSDF")} />
-    </>
-  )
+export default function App() {
+  return <Magic8Ball />;
 }
-
-export default App
