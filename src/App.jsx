@@ -1,21 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import CoffeCards from './components/CoffeCards'
-import ControlPanel from "./components/ControlPanel"
+import { useState } from "react";
+import "./App.css";
+import ProductList from "./components/ProductList";
+import ControlPanel from "./components/ControlPanel";
 
 function App() {
-  const [mode, setMode] = useState('normal');
-
+  const [mode, setMode] = useState("normal");
 
   return (
     <>
-      <h1>Крутое WEB приложение</h1>
+      <h1>Интернет-магазин</h1>
       <ControlPanel setMode={setMode} />
       <hr />
-      <CoffeCards mode={mode} />
+      <ProductList mode={mode} />
     </>
-
-  )
+  );
 }
 
-export default App
+export default App;

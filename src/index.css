@@ -67,56 +67,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-.coffee-card {
-  background-color: #1e1e1e;
-  color: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  width: 280px;
-  height: 420px;
-  margin: 12px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease;
-}
 
-.coffee-card:hover {
-  transform: scale(1.03);
-}
-
-.coffee-card-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.coffee-card-content {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.coffee-card-price {
-  font-weight: bold;
-  margin: 6px 0;
-  color: #f0c040;
-}
-
-.coffee-card-ingredients {
-  margin: 10px 0;
-  padding-left: 20px;
-  font-size: 0.9em;
-}
-
-.coffee-card-sales {
-  font-size: 0.85em;
-  color: #aaa;
-  margin-top: auto;
-}
-
-.coffee-cards {
+.product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -126,6 +78,63 @@ button:focus-visible {
   min-height: 100vh;
 }
 
+.product-card {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 16px;
+  width: 300px;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-brand,
+.product-category {
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.product-price {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #f0c040;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 8px;
+  font-size: 0.9em;
+}
+
+.price-diff {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.product-description {
+  font-size: 0.85em;
+  color: #ccc;
+}
 
 .loader-container {
   display: flex;
@@ -133,7 +142,6 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  text-align: center;
   color: #f0c040;
 }
 
