@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "removeComments": true,
+    "outDir": "js",
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "allowUnreachableCode": false,
+    "alwaysStrict": true
+  }
+}
