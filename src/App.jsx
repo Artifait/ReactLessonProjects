@@ -1,17 +1,25 @@
-import { useState } from "react";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList";
-import ControlPanel from "./components/ControlPanel";
+import Layout from "./components/Layout";
+import Loader from "./components/Loader";
+import Errore from "./components/Errore";
+import NotFound from "./components/NotFound";
+import "./App.css";
 
 function App() {
-  const [mode, setMode] = useState("normal");
-
   return (
     <>
-      <h1>Интернет-магазин</h1>
-      <ControlPanel setMode={setMode} />
-      <hr />
-      <ProductList mode={mode} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<ProductList />} />
+          <Route path="/load" element={<Loader />} />
+          <Route
+            path="/errore"
+            element={<Errore msg="Ошибка во время загрузки товаров" />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </>
   );
 }

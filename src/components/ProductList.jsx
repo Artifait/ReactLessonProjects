@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import Loader from "./Loader";
+import Errore from "./Errore";
 
-export default function ProductList({ mode = "normal" }) {
+export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [er, setEr] = useState("");
   const [load, setLoad] = useState(true);
@@ -11,18 +13,6 @@ export default function ProductList({ mode = "normal" }) {
       setLoad(true);
       setEr("");
       setProducts([]);
-
-      if (mode === "error") {
-        setTimeout(() => {
-          setEr("Ошибка при загрузке товаров.");
-          setLoad(false);
-        }, 1000);
-        return;
-      }
-
-      if (mode === "slow") {
-        return;
-      }
 
       try {
         const res = await fetch(
@@ -39,23 +29,14 @@ export default function ProductList({ mode = "normal" }) {
     };
 
     fetchProducts();
-  }, [mode]);
+  }, []);
 
   if (load) {
-    return (
-      <div className="loader-container">
-        <div className="loader"></div>
-        <p>Загружаем товары...</p>
-      </div>
-    );
+    return <Loader />;
   }
 
   if (er) {
-    return (
-      <div className="loader-container">
-        <h1>{er}</h1>
-      </div>
-    );
+    return <Errore msg={er} />;
   }
 
   return (
