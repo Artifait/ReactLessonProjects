@@ -1,53 +1,67 @@
 import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { StatsService } from '../../data/services/stats.service';
 import { GameResult } from '../../data/interfaces/game-result.interface';
 import { PlayerStats } from '../../data/interfaces/player-stats.interface';
-import { NgIf, NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
+import { ChoiceButtonsComponent } from './choice-buttons/choice-buttons.component';
+import { ResultDisplayComponent } from './result-display/result-display.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @Component({
   selector: 'app-game',
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    ChoiceButtonsComponent,
+    ResultDisplayComponent,
+    LeaderboardComponent,
+  ],
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  standalone: true,
-  imports: [NgIf, NgFor, FormsModule],
 })
 export class GameComponent {
   playerName = '';
   playerStats?: PlayerStats;
   leaderboard: PlayerStats[] = [];
 
-  constructor(private statsService: StatsService) {}
+  playerChoice: 'rock' | 'paper' | 'scissors' | null = null;
+  compChoice: 'rock' | 'paper' | 'scissors' | null = null;
+  outcome: 'win' | 'lose' | 'draw' | null = null;
 
-  /**
-   * Вызывается при клике на кнопку "Играть":
+  constructor(private statsService: StatsService) { }
+  
+  /*
+   * Вызывается при выборе игрока:
    * 1) генерируем выбор компьютера
    * 2) сравниваем с выбором игрока
    * 3) отправляем результат на сервер
    * 4) запрашиваем обновлённую статистику
    */
-  play(choice: 'rock' | 'paper' | 'scissors') {
+  onPlayerChoose(choice: 'rock' | 'paper' | 'scissors') {
     if (!this.playerName.trim()) {
       alert('Введите имя игрока');
       return;
     }
 
-    const outcome = this.resolveOutcome(choice, this.getComputerChoice());
+    this.playerChoice = choice;
+    this.compChoice = this.getComputerChoice();
+    this.outcome = this.resolveOutcome(this.playerChoice, this.compChoice);
 
     const result: GameResult = {
       playerName: this.playerName,
-      outcome,
+      outcome: this.outcome,
     };
 
     this.statsService.addGameResult(result).subscribe({
       next: () => {
-        // После успешной отправки — обновляем статистику игрока и лидерборд
         this.fetchPlayerStats();
         this.fetchLeaderboard();
       },
-      error: (err) => {
-        console.error('Ошибка при отправке результата:', err);
-      },
+      error: (err) => console.error('Ошибка при отправке результата:', err),
     });
   }
 
@@ -76,7 +90,6 @@ export class GameComponent {
     return 'lose';
   }
 
-  /** Запрос статистики по текущему игроку */
   private fetchPlayerStats() {
     this.statsService.getPlayerStats(this.playerName).subscribe({
       next: (stats) => (this.playerStats = stats),
@@ -84,7 +97,6 @@ export class GameComponent {
     });
   }
 
-  /** Запрос лидерборда */
   private fetchLeaderboard() {
     this.statsService.getLeaderboard().subscribe({
       next: (list) => (this.leaderboard = list),

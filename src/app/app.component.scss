@@ -1,0 +1,7 @@
+@use "../styles/_variables";
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: variables.$background-color;
+}

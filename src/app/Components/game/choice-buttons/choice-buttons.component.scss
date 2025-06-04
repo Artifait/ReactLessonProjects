@@ -1,0 +1,35 @@
+@use "../_variables";
+
+.choices-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.choice-btn {
+  background: variables.$card-bg;
+  color: variables.$text-color;
+  border: 1px solid variables.$border-color;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px variables.$shadow-color;
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: variables.$hover-bg;
+    box-shadow: 0 4px 8px variables.$shadow-color;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    color: variables.$text-muted;
+  }
+}

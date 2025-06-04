@@ -1,32 +1,36 @@
 <div class="game-container">
   <h2>Камень, ножницы, бумага</h2>
 
-  <label>
-    Имя игрока:
-    <input [(ngModel)]="playerName" placeholder="Введите ваше имя" />
-  </label>
-
-  <div class="choices">
-    <button (click)="play('rock')">Камень</button>
-    <button (click)="play('paper')">Бумага</button>
-    <button (click)="play('scissors')">Ножницы</button>
+  <div class="input-block">
+    <label>Имя игрока:</label>
+    <input
+      [(ngModel)]="playerName"
+      placeholder="Введите ваше имя"
+      class="name-input"
+    />
   </div>
 
-  <div *ngIf="playerStats">
-    <h3>Статистика для {{ playerStats?.playerName }}</h3>
-    <p>Победы: {{ playerStats?.wins }}</p>
-    <p>Поражения: {{ playerStats?.losses }}</p>
-    <p>Ничьи: {{ playerStats?.draws }}</p>
-    <p>Всего игр: {{ playerStats?.totalGames }}</p>
+  <!-- Кнопки выбора -->
+  <app-choice-buttons (choice)="onPlayerChoose($event)"></app-choice-buttons>
+
+  <!-- Отображение результата (win/lose/draw) -->
+  <app-result-display
+    [playerChoice]="playerChoice"
+    [compChoice]="compChoice"
+    [outcome]="outcome"
+  ></app-result-display>
+
+  <!-- Статистика игрока -->
+  <div class="player-stats" *ngIf="playerStats">
+    <h3>Статистика для {{ playerStats.playerName }}</h3>
+    <div class="stats-grid">
+      <div>Победы: {{ playerStats.wins }}</div>
+      <div>Поражения: {{ playerStats.losses }}</div>
+      <div>Ничьи: {{ playerStats.draws }}</div>
+      <div>Всего игр: {{ playerStats.totalGames }}</div>
+    </div>
   </div>
 
-  <div *ngIf="leaderboard.length">
-    <h3>Лидерборд (топ 10 по победам)</h3>
-    <ul>
-      <li *ngFor="let p of leaderboard">
-        {{ p.playerName }} — Побед: {{ p.wins }}, Поражений: {{ p.losses }},
-        Ничьи: {{ p.draws }}, Итого сыграно: {{ p.totalGames }}
-      </li>
-    </ul>
-  </div>
+  <!-- Лидерборд -->
+  <app-leaderboard [leaderboard]="leaderboard"></app-leaderboard>
 </div>

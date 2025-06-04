@@ -1,0 +1,71 @@
+@use "_variables";
+
+.game-container {
+  max-width: 495px;
+  margin: 2rem auto;
+  background: variables.$bg-color;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px variables.$shadow-color;
+  color: variables.$text-color;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: variables.$primary-color;
+  }
+
+  .input-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    label {
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+      color: variables.$text-color;
+    }
+
+    .name-input {
+      background: variables.$input-bg;
+      color: variables.$text-color;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid variables.$border-color;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+      outline: none;
+
+      &:focus {
+        border-color: variables.$secondary-color;
+      }
+    }
+  }
+
+  .player-stats {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: variables.$secondary-color;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: variables.$text-color;
+
+      div {
+        background: variables.$card-bg;
+        padding: 0.5rem;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px variables.$shadow-color;
+      }
+    }
+  }
+}

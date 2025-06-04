@@ -1,0 +1,45 @@
+@use "../_variables";
+
+.leaderboard-container {
+  margin-top: 2rem;
+  text-align: center;
+  background: variables.$card-bg;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px variables.$shadow-color;
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: variables.$text-color;
+  }
+
+  .leaderboard-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+      border: 1px solid variables.$border-color;
+      font-size: 0.9rem;
+      color: variables.$text-color;
+    }
+
+    thead {
+      background-color: variables.$hover-bg;
+    }
+
+    tbody tr {
+      background-color: variables.$card-bg;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: variables.$hover-bg;
+      }
+    }
+  }
+}

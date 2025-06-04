@@ -1,0 +1,25 @@
+<div class="leaderboard-container" *ngIf="leaderboard?.length">
+  <h3>Лидерборд (топ {{ leaderboard.length }})</h3>
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Игрок</th>
+        <th>Победы</th>
+        <th>Пораж.</th>
+        <th>Ничьи</th>
+        <th>Сыграли</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of leaderboard; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ p.playerName }}</td>
+        <td>{{ p.wins }}</td>
+        <td>{{ p.losses }}</td>
+        <td>{{ p.draws }}</td>
+        <td>{{ p.totalGames }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
