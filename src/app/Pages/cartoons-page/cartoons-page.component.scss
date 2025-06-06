@@ -1,0 +1,29 @@
+@use "../../../styles/_variables";
+
+.page-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  color: variables.$text-color;
+
+  h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: variables.$secondary-color;
+  }
+
+  .status-block {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    .loading {
+      color: variables.$text-muted;
+      font-size: 1rem;
+    }
+    .error {
+      color: variables.$error-color;
+      font-size: 1rem;
+    }
+  }
+}

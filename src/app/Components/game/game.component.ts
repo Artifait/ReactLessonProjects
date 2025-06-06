@@ -32,8 +32,8 @@ export class GameComponent {
   compChoice: 'rock' | 'paper' | 'scissors' | null = null;
   outcome: 'win' | 'lose' | 'draw' | null = null;
 
-  constructor(private statsService: StatsService) { }
-  
+  constructor(private statsService: StatsService) {}
+
   /*
    * Вызывается при выборе игрока:
    * 1) генерируем выбор компьютера
@@ -44,6 +44,10 @@ export class GameComponent {
   onPlayerChoose(choice: 'rock' | 'paper' | 'scissors') {
     if (!this.playerName.trim()) {
       alert('Введите имя игрока');
+      return;
+    }
+    if (this.playerName.length > 10) {
+      alert('Ограничение по длине имени - 10');
       return;
     }
 

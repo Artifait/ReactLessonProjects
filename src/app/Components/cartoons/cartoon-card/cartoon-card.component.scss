@@ -1,0 +1,75 @@
+@use "sass:color";
+@use "../../../../styles/_variables";
+
+.card {
+  background: variables.$card-background;
+  border: 1px solid variables.$border-color;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px variables.$shadow-color;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px variables.$shadow-color;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    overflow: hidden;
+    background: color.adjust(variables.$card-background, $lightness: -5%);
+
+    img {
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .details {
+    padding: 0.75rem 1rem;
+    color: variables.$text-color;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .title {
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+      color: variables.$primary-color;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: variables.$text-muted;
+      display: flex;
+      gap: 0.5rem;
+
+      .year,
+      .rating {
+        background: variables.$hover-bg;
+        padding: 0.15rem 0.5rem;
+        border-radius: 4px;
+      }
+    }
+
+    .genre {
+      font-size: 0.85rem;
+      color: variables.$text-muted;
+    }
+
+    .extras {
+      font-size: 0.8rem;
+      color: variables.$text-muted;
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+  }
+}

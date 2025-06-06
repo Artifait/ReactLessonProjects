@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="image-wrapper" *ngIf="cartoon.image">
+    <img [src]="cartoon.image" [alt]="cartoon.title" />
+  </div>
+  <div class="details">
+    <h4 class="title">{{ cartoon.title }}</h4>
+    <div class="meta">
+      <span class="year">{{ cartoon.year }}</span>
+      <span class="rating">{{ cartoon.rating }}</span>
+    </div>
+    <div class="genre">
+      <span *ngFor="let g of cartoon.genre; let i = index">
+        {{ g }}<span *ngIf="i < cartoon.genre.length - 1">, </span>
+      </span>
+    </div>
+    <div class="extras">
+      <span>Эпизоды: {{ cartoon.episodes }}</span>
+      <span>Длительность: {{ cartoon.runtime_in_minutes }} мин</span>
+    </div>
+  </div>
+</div>
