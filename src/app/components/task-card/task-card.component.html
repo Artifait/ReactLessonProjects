@@ -1,0 +1,19 @@
+<div class="task-card" [formGroup]="form">
+  <div class="header">
+    <h3 *ngIf="!editing">{{ task.title }}</h3>
+    <input *ngIf="editing" formControlName="title" />
+    <button class="edit-btn" (click)="toggleEdit()">
+      {{ editing ? "Save" : "Edit" }}
+    </button>
+  </div>
+
+  <p *ngIf="!editing">{{ task.description }}</p>
+  <textarea *ngIf="editing" formControlName="description"></textarea>
+
+  <div class="tags">
+    <app-tag-selector
+      [selectedTags]="form.value.tags"
+      (selectedChange)="onTagsChange($event)"
+    ></app-tag-selector>
+  </div>
+</div>

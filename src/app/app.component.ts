@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './Components/header/header.component';
+import { TaskCardComponent } from './components/task-card/task-card.component';
+import { TaskContainerComponent } from './components/task-container/task-container.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [TaskContainerComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'FinalProject';
+  title = 'task-manager';
 }

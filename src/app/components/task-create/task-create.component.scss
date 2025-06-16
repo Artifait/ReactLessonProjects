@@ -1,0 +1,44 @@
+$bg-color: #1e1e1e;
+$input-bg: #2c2c2c;
+$border-color: #3a3a3a;
+$text-color: #e0e0e0;
+$btn-bg: #444;
+$btn-text: #e0e0e0;
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: $bg-color;
+  padding: 16px;
+  border-radius: 8px;
+  color: $text-color;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+input,
+textarea,
+select {
+  margin-top: 4px;
+  padding: 8px;
+  background: $input-bg;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  color: $text-color;
+}
+button {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: $btn-bg;
+  border: none;
+  border-radius: 4px;
+  color: $btn-text;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

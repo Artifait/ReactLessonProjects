@@ -1,0 +1,24 @@
+$bg-color: #2c2c2c;
+$text-color: #e0e0e0;
+$accent-color: #555;
+
+.tag-card {
+  display: inline-flex;
+  align-items: center;
+  background: $accent-color;
+  border-radius: 12px;
+  padding: 4px 8px;
+  margin: 2px;
+}
+.tag-name {
+  margin-right: 4px;
+  font-size: 0.875rem;
+  color: $text-color;
+}
+.remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: $text-color;
+}
