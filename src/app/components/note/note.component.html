@@ -1,0 +1,7 @@
+<div class="note" [class.liked]="note.liked">
+  <span class="note-text">{{ note.text }}</span>
+  <div class="actions">
+    <button class="btn-star" (click)="toggleLike()">★</button>
+    <button class="btn-delete" (click)="delete.emit(note.id)">🗑</button>
+  </div>
+</div>

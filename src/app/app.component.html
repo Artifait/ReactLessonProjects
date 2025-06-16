@@ -1,1 +1,18 @@
-<app-task-container></app-task-container>
+<div class="container">
+  <h2>{{ notes.length }} записи, из них {{ likedCount() }} понравилось</h2>
+
+  <app-note-filter
+    [filter]="filter"
+    (filterChange)="filter = $event"
+    (searchChange)="query = $event"
+  ></app-note-filter>
+
+  <app-note
+    *ngFor="let note of filteredNotes()"
+    [note]="note"
+    (like)="onLike($event)"
+    (delete)="onDelete($event)"
+  ></app-note>
+
+  <app-note-input (create)="onCreate($event)"></app-note-input>
+</div>

@@ -1,0 +1,9 @@
+<div class="note-input">
+  <input
+    type="text"
+    [(ngModel)]="text"
+    placeholder="О чем вы думаете сейчас?"
+    (keyup.enter)="add()"
+  />
+  <button (click)="add()">Добавить</button>
+</div>

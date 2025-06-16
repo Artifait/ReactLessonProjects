@@ -1,0 +1,16 @@
+<div class="note-filter">
+  <input
+    type="text"
+    [(ngModel)]="query"
+    placeholder="Поиск по записям"
+    (ngModelChange)="changeQuery()"
+  />
+  <div class="buttons">
+    <button [class.active]="filter === 'all'" (click)="setFilter('all')">
+      Все
+    </button>
+    <button [class.active]="filter === 'liked'" (click)="setFilter('liked')">
+      Понравилось
+    </button>
+  </div>
+</div>
